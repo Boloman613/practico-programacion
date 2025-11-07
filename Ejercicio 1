@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+/**
+ * @brief Calcula la potencia de una base elevada a un exponente.
+ * @param base El n�mero base (x).
+ * @param exponente El exponente entero (y).
+ * @return El resultado de base^exponente.
+ */
+double potencia(double base, int exponente) {
+    double resultado = 1.0;
+
+    if (base == 0 && exponente == 0) {
+        return 1.0;
+    }
+
+    if (exponente == 0) {
+        return 1.0;
+    }
+
+    int exp_positivo = exponente;
+    if (exponente < 0) {
+        exp_positivo = -exponente;
+    }
+
+    for (int i = 0; i < exp_positivo; ++i) {
+        resultado *= base;
+    }
+
+    if (exponente < 0) {
+        return 1.0 / resultado;
+    } else {
+        return resultado;
+    }
+}
+
+int main() {
+    double x;
+    int y;
+
+    cout << "--- Problema 1: Potencia ---" << endl;
+    cout << "Introduce la base (x): ";
+    cin >> x;
+    cout << "Introduce el exponente entero (y): ";
+    cin >> y;
+
+    double resultado_potencia = potencia(x, y);
+
+    cout << "Resultado (" << x << " ^ " << y << "): " << resultado_potencia << endl;
+
+    return 0;
+}
