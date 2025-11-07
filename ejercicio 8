@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void resolverEcuacionCuadratica(double a, double b, double c) {
+    if (a == 0) {
+        cout << "No es una ecuacion cuadratica (a = 0)" << endl;
+        return;
+    }
+
+    double discriminante = b * b - 4 * a * c;
+
+    if (discriminante > 0) {
+        double x1 = (-b + sqrt(discriminante)) / (2 * a);
+        double x2 = (-b - sqrt(discriminante)) / (2 * a);
+        cout << "Dos raices reales:" << endl;
+        cout << "x1 = " << x1 << endl;
+        cout << "x2 = " << x2 << endl;
+    }
+    else if (discriminante == 0) {
+        double x = -b / (2 * a);
+        cout << "Una raiz doble:" << endl;
+        cout << "x = " << x << endl;
+    }
+    else {
+        double real = -b / (2 * a);
+        double imaginaria = sqrt(-discriminante) / (2 * a);
+        cout << "Dos raices complejas:" << endl;
+        cout << "x1 = " << real << " + " << imaginaria << "i" << endl;
+        cout << "x2 = " << real << " - " << imaginaria << "i" << endl;
+    }
+}
+
+int main() {
+    double a, b, c;
+
+    cout << "RESOLUCION DE ECUACION CUADRATICA" << endl;
+    cout << "Forma: ax^2 + bx + c = 0" << endl;
+    cout << "Ingrese a: ";
+    cin >> a;
+    cout << "Ingrese b: ";
+    cin >> b;
+    cout << "Ingrese c: ";
+    cin >> c;
+
+    resolverEcuacionCuadratica(a, b, c);
+
+    return 0;
+}
