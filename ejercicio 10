@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+void decimalARomano(int numero) {
+    if (numero <= 0 || numero > 3999) {
+        cout << "Numero fuera de rango (1-3999)" << endl;
+        return;
+    }
+
+    string romanos[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    int valores[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+
+    string resultado = "";
+
+    for (int i = 0; i < 13; i++) {
+        while (numero >= valores[i]) {
+            resultado += romanos[i];
+            numero -= valores[i];
+        }
+    }
+
+    cout << "Numero romano: " << resultado << endl;
+}
+
+int main() {
+    int numero;
+
+    cout << "CONVERSION A NUMEROS ROMANOS" << endl;
+    cout << "Ingrese un numero (1-3999): ";
+    cin >> numero;
+
+    decimalARomano(numero);
+
+    return 0;
+}
