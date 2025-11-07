@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+bool esBisiesto(int ano) {
+    return (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
+}
+
+bool validarFecha(int dia, int mes, int ano) {
+    if (ano < 1) return false;
+    if (mes < 1 || mes > 12) return false;
+
+    int diasPorMes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (mes == 2 && esBisiesto(ano)) {
+        diasPorMes[1] = 29;
+    }
+
+    if (dia < 1 || dia > diasPorMes[mes - 1]) {
+        return false;
+    }
+
+    return true;
+}
+
+int main() {
+    int dia, mes, ano;
+
+    cout << "VALIDACION DE FECHA" << endl;
+    cout << "Ingrese dia: ";
+    cin >> dia;
+    cout << "Ingrese mes: ";
+    cin >> mes;
+    cout << "Ingrese ano: ";
+    cin >> ano;
+
+    if (validarFecha(dia, mes, ano)) {
+        cout << "La fecha es valida" << endl;
+    } else {
+        cout << "La fecha es invalida" << endl;
+    }
+
+    return 0;
+}
