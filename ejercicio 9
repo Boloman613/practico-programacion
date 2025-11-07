@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int binarioADecimal(int binario) {
+    int decimal = 0;
+    int potencia = 0;
+
+    while (binario > 0) {
+        int digito = binario % 10;
+        if (digito != 0 && digito != 1) {
+            cout << "Error: Numero no es binario" << endl;
+            return -1;
+        }
+        decimal += digito * pow(2, potencia);
+        binario /= 10;
+        potencia++;
+    }
+
+    return decimal;
+}
+
+int main() {
+    int binario;
+
+    cout << "CONVERSION BINARIO A DECIMAL" << endl;
+    cout << "Ingrese un numero binario: ";
+    cin >> binario;
+
+    int decimal = binarioADecimal(binario);
+    if (decimal != -1) {
+        cout << "El equivalente decimal es: " << decimal << endl;
+    }
+
+    return 0;
+}
