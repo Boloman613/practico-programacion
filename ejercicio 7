@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+long long FAC(int n) {
+    if (n < 0) return 0;
+    if (n == 0 || n == 1) return 1;
+
+    long long factorial = 1;
+    for (int i = 2; i <= n; i++) {
+        factorial *= i;
+    }
+    return factorial;
+}
+
+long long combiEficiente(int n, int r) {
+    if (r < 0 || r > n) return 0;
+    if (r == 0 || r == n) return 1;
+
+    if (r > n - r) {
+        r = n - r;
+    }
+
+    long long resultado = 1;
+    for (int i = 1; i <= r; i++) {
+        resultado = resultado * (n - i + 1) / i;
+    }
+    return resultado;
+}
+
+int main() {
+    int n, r;
+
+    cout << "NUMERO COMBINATORIO C(n, r)" << endl;
+    cout << "Ingrese el valor de n: ";
+    cin >> n;
+    cout << "Ingrese el valor de r: ";
+    cin >> r;
+
+    if (r < 0 || n < 0 || r > n) {
+        cout << "Error: Valores no validos" << endl;
+        return 1;
+    }
+
+    long long C1 = FAC(n) / (FAC(r) * FAC(n - r));
+
+    long long C2 = combiEficiente(n, r);
+
+    cout << "Metodo con factoriales: C(" << n << ", " << r << ") = " << C1 << endl;
+    cout << "Metodo eficiente: C(" << n << ", " << r << ") = " << C2 << endl;
+
+    return 0;
+}
